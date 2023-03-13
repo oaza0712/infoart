@@ -76,7 +76,6 @@ public class Stash {
 	        	     Stash stashItem = new Stash(id_article, id_store, quantity);
 	        	     stash.add(stashItem);
 	        	     
-	        	     System.out.println(line);
 	        	}
 	        	
 	        	reader.close();  

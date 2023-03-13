@@ -142,6 +142,7 @@ public class ArticleStash {
 		 
 		 for (Article article : articles)
 	     { 		
+			 
 			  float quantity = 0;
 			  float valueInEuro = 0;
 			  float priceInEuro = 0;
@@ -154,6 +155,11 @@ public class ArticleStash {
 				   
 				   if(article.getId().equals(articleStash.getIdArticle())) {
 					   if(articleStash.getQuantity() != "0") {
+						   /*
+						   System.out.println("STRING STASH Quantity" + articleStash.getQuantity());
+						   System.out.println("REPLACE STASH Quantity" + articleStash.getQuantity().replace(",", "."));
+						   System.out.println("float STASH Quantity" + Float.parseFloat(articleStash.getQuantity().replace(",", ".")));
+						   */
 						   numberOfStores++;
 						   quantity += Float.parseFloat(articleStash.getQuantity().replace(",", "."));
 					   }
@@ -165,20 +171,24 @@ public class ArticleStash {
 			  for(PriceEuro priceEuro: pricesEuro){ 
 				   
 				   if(article.getId().equals(priceEuro.getIdArticle())) {
-						  valueInEuro = quantity * Float.parseFloat(priceEuro.getPriceEuro().replace(",", "."));
-						  priceInEuro = Float.parseFloat(priceEuro.getPriceEuro().replace(",", "."));
+					   /*
+					   System.out.println("STRING euro" + priceEuro.getPriceEuro());
+					   System.out.println("REPLACE euro" + priceEuro.getPriceEuro().replace(",", "."));
+					   System.out.println("float  euro" + Float.parseFloat(priceEuro.getPriceEuro().replace(",", ".")));
+					   */
+					   valueInEuro = quantity * Float.parseFloat(priceEuro.getPriceEuro().replace(",", "."));
+					   priceInEuro = Float.parseFloat(priceEuro.getPriceEuro().replace(",", "."));
 				   }
 			  }
 			  			  
 			 
-			  
 			  //calculating worth of an article in all stores in wanted currency
 			  valueAllStoresCurrency = valueInEuro * conversionRate;
 			  
-			  
 			  ArticleStash articleStash= new ArticleStash(article.getId(), article.getName(),(String.valueOf(priceInEuro)).replace(".", ","), String.valueOf(quantity).replace(".", ","), article.getMeasuringUnit(), String.valueOf(valueInEuro).replace(".", ","), String.valueOf(valueAllStoresCurrency).replace(".", ","), String.valueOf(numberOfStores).replace(".", ","));
 			  articleStashList.add(articleStash);
-	      }
+			  }
+	      
 		  
 		return articleStashList;
 	}
@@ -189,10 +199,8 @@ public class ArticleStash {
 		String[] number = numberToFormat.split(",");
 		String intNumber = number[0];
 		String decimalPart = "";
+		String finalNumber = intNumber;
 		
-		if(number.length > 1) {
-			decimalPart = number[1];
-		}
 		
 		if(intNumber.length() >= 4) {
 		for(int j = intNumber.length() - 1 - 2; j >= 1; j-=3){
@@ -202,10 +210,14 @@ public class ArticleStash {
                     + intNumber.substring(j,intNumber.length());
 
 		 }}
-		return( intNumber + "," + decimalPart);
+		
+		if(number.length > 1) {
+			decimalPart = number[1];
+			finalNumber = intNumber + "," + decimalPart;
+		}
+		return finalNumber;
 	}
 	
-
 	
 	@Override
 	public int hashCode() {
@@ -234,13 +246,22 @@ public class ArticleStash {
 	}
 
 	*/
-
+/*
 	@Override
 	public String toString() {
-		return "ArticleStash [id=" + id + ", name=" + name + ", priceEuro=" + priceEuro + ", quantityAllStores="
-				+ quantityAllStores + ", measuringUnit=" + measuringUnit + ", valueAllStoresEuro=" + valueAllStoresEuro
-				+ ", valueAllStoresDiffCurrency=" + valueAllStoresDiffCurrency + ", numberOfStoresWithArticle="
+		return "ArticleStash [id=" + id + " name=" + name + " priceEuro=" + priceEuro + " quantityAllStores="
+				+ quantityAllStores + " measuringUnit=" + measuringUnit + " valueAllStoresEuro=" + valueAllStoresEuro
+				+ " valueAllStoresDiffCurrency=" + valueAllStoresDiffCurrency + " numberOfStoresWithArticle="
 				+ numberOfStoresWithArticle + "]";
+	}
+	
+	*/
+	@Override
+	public String toString() {
+		return id + " " + name + " " + priceEuro + " "
+				+ quantityAllStores + " " + measuringUnit + " " + valueAllStoresEuro
+				+ " " + valueAllStoresDiffCurrency + " "
+				+ numberOfStoresWithArticle;
 	}
 	
 

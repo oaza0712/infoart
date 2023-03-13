@@ -43,23 +43,18 @@ public class Main {
 			      		break;
 					  }
 					  
-				  }
-				  
+				  }  
       		}
 			  
 		  }
-		  
+
 		ArrayList<Article> articles = Article.parseFile("./input/artikli.txt");
 		ArrayList<Store> stores = Store.parseFile("./input/pm.txt");
 		ArrayList<PriceEuro> pricesEuro = PriceEuro.parseFile("./input/cjenik.txt");
 		ArrayList<Stash> stash = Stash.parseFile("./input/stanja.txt");
 		
-		ArrayList<ArticleStash> articleStash = ArticleStash.makeArticleStashObject(articles, stores, pricesEuro, stash,conversionRate);
+		ArrayList<ArticleStash> articleStash = ArticleStash.makeArticleStashObject(articles, stores, pricesEuro, stash, conversionRate);
 		
-		 for(int i = 0; i < 3; i++) {
-	        	System.out.println(articleStash.get(i));
-	        }
-		 
 		Collections.sort(articleStash, new Comparator<ArticleStash>() {
 		    @Override
 		    public int compare(ArticleStash o1, ArticleStash o2) {
@@ -67,10 +62,18 @@ public class Main {
 		    }
 		});
 		
-		
-
+		 for(int i = 0; i < 5; i++) {
+	        	System.out.println(articleStash.get(i));
+	        }
+		 
+        
 		ArticleStashOutput articleStashFormated = new ArticleStashOutput(articleStash);
 		articleStashFormated.formatNumbers();
+		
+		for(int i = 0; i < 5; i++) {
+        	System.out.println(articleStashFormated.getArticleStash().get(i));
+        }
+		
 		articleStashFormated.createArticleStashFile();
 		
 		String dellimiter = "\t";

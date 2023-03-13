@@ -63,7 +63,6 @@ public class PriceEuro {
 
 	        	     pricesEuro.add(new PriceEuro(id, priceEuro));
 	        	     
-	        	     System.out.println(line);
 	        	}
 	        	
 	        	reader.close();  

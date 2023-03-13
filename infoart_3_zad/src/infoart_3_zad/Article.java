@@ -61,8 +61,6 @@ public class Article {
 	        	     String measuringUnit = separatedLine[2];
 
 	        	     articles.add(new Article(id, name, measuringUnit));
-	        	     
-	        	     System.out.println(line);
 	        	}
 	        	
 	        	reader.close();  
@@ -81,7 +79,7 @@ public class Article {
 	
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", name=" + name + ", measuringUnit=" + measuringUnit + "]";
+		return "Article [id=" + id + " name=" + name + " measuringUnit=" + measuringUnit + "]";
 	}
 	@Override
 	public int hashCode() {

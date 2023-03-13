@@ -63,11 +63,9 @@ public class Store {
 	        	     
 	        	     String id = separatedLine[0];
 	        	     String name = separatedLine[1];
-	        	     
 
 	        	     stores.add(new Store(id, name));
 	        	     
-	        	     System.out.println(line);
 	        	}
 	        	
 	        	reader.close();  

@@ -38,21 +38,18 @@ public class ArticleStashOutput {
 
 			item.setQuantityAllStores(item.addThousandsSeparator('.',item.getQuantityAllStores()));
 			
-			item.setId(item.getId());
-
 			item.setValueAllStoresEuro(item.addThousandsSeparator('.',item.getValueAllStoresEuro()));
 			
 			item.setValueAllStoresDiffCurrency(item.addThousandsSeparator('.',item.getValueAllStoresDiffCurrency()));
 			
 			item.setNumberOfStoresWithArticle(item.addThousandsSeparator('.',item.getNumberOfStoresWithArticle()));
-		
 		});
 				 
 	}
 	
 	public static String formatOutput(ArticleStash item, String dellimiter, String newLine) {
 		
-		return item.getId() + dellimiter + item.getName() + dellimiter +item.getPriceEuro()
+		return item.getId() + dellimiter + item.getName() + dellimiter +item.getPriceEuro() + dellimiter
 			 		+ item.getQuantityAllStores() + dellimiter + item.getMeasuringUnit() + dellimiter
 			 		+ item.getValueAllStoresEuro() + dellimiter + item.getValueAllStoresDiffCurrency() + dellimiter
 			 		+ item.getNumberOfStoresWithArticle() + newLine; 
