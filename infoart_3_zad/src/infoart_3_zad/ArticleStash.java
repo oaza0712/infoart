@@ -7,7 +7,7 @@ public class ArticleStash {
 	private String id;
 	private String name;
 	private float priceEuro;
-	private int quantityAllStores;
+	private float quantityAllStores;
 	private String measuringUnit;
 	private float valueAllStoresEuro;
 	private float valueAllStoresDiffCurrency;
@@ -15,7 +15,7 @@ public class ArticleStash {
 	
 	
 	
-	public ArticleStash(String id, String name, float priceEuro, int quantityAllStores, String measuringUnit,
+	public ArticleStash(String id, String name, float priceEuro, float quantityAllStores, String measuringUnit,
 			float valueAllStoresEuro, float valueAllStoresDiffCurrency, int numberOfStoresWithArticle) {
 		super();
 		this.id = id;
@@ -66,13 +66,13 @@ public class ArticleStash {
 
 
 
-	public int getQuantityAllStores() {
+	public float getQuantityAllStores() {
 		return quantityAllStores;
 	}
 
 
 
-	public void setQuantityAllStores(int quantityAllStores) {
+	public void setQuantityAllStores(float quantityAllStores) {
 		this.quantityAllStores = quantityAllStores;
 	}
 
@@ -146,7 +146,7 @@ public class ArticleStash {
 		return Objects.equals(id, other.id) && Objects.equals(measuringUnit, other.measuringUnit)
 				&& Objects.equals(name, other.name) && numberOfStoresWithArticle == other.numberOfStoresWithArticle
 				&& Float.floatToIntBits(priceEuro) == Float.floatToIntBits(other.priceEuro)
-				&& quantityAllStores == other.quantityAllStores
+				&& Float.floatToIntBits(quantityAllStores) == Float.floatToIntBits(other.quantityAllStores)
 				&& Float.floatToIntBits(valueAllStoresDiffCurrency) == Float
 						.floatToIntBits(other.valueAllStoresDiffCurrency)
 				&& Float.floatToIntBits(valueAllStoresEuro) == Float.floatToIntBits(other.valueAllStoresEuro);

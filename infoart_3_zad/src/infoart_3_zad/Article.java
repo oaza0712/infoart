@@ -20,10 +20,10 @@ public class Article {
 		this.measuringUnit = measuringUnit;
 	}
 	
-	public String getSif() {
+	public String getId() {
 		return id;
 	}
-	public void setSif(String sif) {
+	public void setId(String sif) {
 		this.id = sif;
 	}
 	public String getNaziv() {

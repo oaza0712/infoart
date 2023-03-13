@@ -14,12 +14,53 @@ public class Main {
 		ArrayList<PriceEuro> pricesEuro = PriceEuro.parseFile("./input/cjenik.txt");
 		ArrayList<Stash> stash = Stash.parseFile("./input/stanja.txt");
 		
+		float[] quantityAllStores = new float[articles.size()];
+		float[] valueAllStoresEuro = new float[articles.size()];
+		int[] numberOfStoresWithArticle = new int[articles.size()];
+
+		int counter = 0;
 		
-		
-		  for (Stash str : stash)
+		  for (Article article : articles)
 	      { 		      
-	           System.out.println(str.toString()); 		
+			  float quantity = 0;
+			  float valueInEuro = 0;
+			  int numberOfStores = 0;
+			  
+			  //calculating number of articles in all stores
+			  //counting in how many stores article is available in
+			  for(Stash articleStash: stash){ 
+				   
+				   if(article.getId().equals(articleStash.getId_article())) {
+					   if(articleStash.getQuantity() != 0) {
+						   numberOfStores++;
+						   quantity += articleStash.getQuantity();
+					   }
+				   }
+			  }
+			  numberOfStoresWithArticle[counter] = numberOfStores;
+			  quantityAllStores[counter] = quantity;
+
+			  //calculating worth of an article in all stores in Euro
+			  for(PriceEuro priceEuro: pricesEuro){ 
+				   
+				   if(article.getId().equals(priceEuro.getArticle_id())) {
+						  valueInEuro = quantity * priceEuro.getPriceEuro();
+				   }
+			  }
+			  			  
+			  valueAllStoresEuro[counter] = valueInEuro;
+			  
+			  //calculating worth of an article in all stores in wanted currency
+			  
+			  counter++;
+			  
 	      }
+		  
+		  
+		 
+			  
+		  
+		  
 		
 	}
 	
