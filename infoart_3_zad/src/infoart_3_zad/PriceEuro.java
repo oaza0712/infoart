@@ -58,7 +58,7 @@ public class PriceEuro {
 	        	     String separatedLine[] = line.split("\\|");
 	        	     
 	        	     String id = separatedLine[0];
-	        	     String priceEuro = separatedLine[1].replaceAll(",", ".");;
+	        	     String priceEuro = separatedLine[1].replaceAll(",", ".");
 	        	     
 
 	        	     pricesEuro.add(new PriceEuro(id, Float.parseFloat(priceEuro)));

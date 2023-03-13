@@ -1,5 +1,6 @@
 package infoart_3_zad;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ArticleStash {
@@ -124,6 +125,59 @@ public class ArticleStash {
 		this.numberOfStoresWithArticle = numberOfStoresWithArticle;
 	}
 
+	
+	public static ArrayList<ArticleStash> makeArticleStashObject(
+	ArrayList<Article> articles,
+	ArrayList<Store> stores,
+	ArrayList<PriceEuro> pricesEuro,
+	ArrayList<Stash> stash,
+	float conversionRate) 
+	{
+		
+		 ArrayList<ArticleStash> articleStashList = new ArrayList<ArticleStash>();
+		 
+		 for (Article article : articles)
+	     { 		      
+			  float quantity = 0;
+			  float valueInEuro = 0;
+			  float priceInEuro = 0;
+			  int numberOfStores = 0;
+			  float valueAllStoresCurrency = 0;
+			  
+			  //calculating number of articles in all stores
+			  //counting in how many stores article is available in
+			  for(Stash articleStash: stash){ 
+				   
+				   if(article.getId().equals(articleStash.getId_article())) {
+					   if(articleStash.getQuantity() != 0) {
+						   numberOfStores++;
+						   quantity += articleStash.getQuantity();
+					   }
+				   }
+			  }
+			 
+
+			  //calculating worth of an article in all stores in Euro
+			  for(PriceEuro priceEuro: pricesEuro){ 
+				   
+				   if(article.getId().equals(priceEuro.getArticle_id())) {
+						  valueInEuro = quantity * priceEuro.getPriceEuro();
+						  priceInEuro = priceEuro.getPriceEuro();
+				   }
+			  }
+			  			  
+			 
+			  
+			  //calculating worth of an article in all stores in wanted currency
+			  valueAllStoresCurrency = valueInEuro * conversionRate;
+			  
+			  
+			  ArticleStash articleStash= new ArticleStash(article.getId(), article.getName(), priceInEuro, quantity, article.getMeasuringUnit(), valueInEuro, valueAllStoresCurrency, numberOfStores);
+			  articleStashList.add(articleStash);
+	      }
+		  
+		return articleStashList;
+	}
 
 
 	@Override
@@ -152,7 +206,7 @@ public class ArticleStash {
 				&& Float.floatToIntBits(valueAllStoresEuro) == Float.floatToIntBits(other.valueAllStoresEuro);
 	}
 
-
+	
 
 	@Override
 	public String toString() {

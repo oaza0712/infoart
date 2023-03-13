@@ -23,19 +23,19 @@ public class Article {
 	public String getId() {
 		return id;
 	}
-	public void setId(String sif) {
-		this.id = sif;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getNaziv() {
+	public String getName() {
 		return name;
 	}
-	public void setNaziv(String naziv) {
-		this.name = naziv;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCijenaEur() {
+	public String getMeasuringUnit() {
 		return measuringUnit;
 	}
-	public void setCijenaEur(String measuringUnit) {
+	public void setMeasuringUnit(String measuringUnit) {
 		this.measuringUnit = measuringUnit;
 	}
 	
