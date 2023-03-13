@@ -206,28 +206,7 @@ public class ArticleStash {
 	}
 	
 
-	/*
-    @Override
-    public int compareTo(ArticleStash articleStash) {
-        return this.name.compareTo(articleStash.id);
-    }
-    
-    public static ArrayList<ArticleStash> sortByArticleId(ArrayList<ArticleStash> articleStash){
-    	//articleStash = List<ArticleStash> articleStash;
-        for(int i = 0; i < 3; i++) {
-        	System.out.println(articleStash.get(i));
-        }
-
-    	 Collections.sort((List<ArticleStash>) articleStash);
-    	 for(int i = 0; i < 3; i++) {
-         	System.out.println(articleStash.get(i));
-         }
-    	 
-         //articleStash.stream().map(article -> article.id).forEach(System.out::println);
-    	
-    	return articleStash;
-    } */
-    
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, measuringUnit, name, numberOfStoresWithArticle, priceEuro, quantityAllStores,

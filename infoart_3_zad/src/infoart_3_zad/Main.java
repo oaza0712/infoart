@@ -18,7 +18,7 @@ public class Main {
 		String wantedCurrency = args[0];
 		float conversionRate = 1;
 
-		  String response = sendHTTPRequest.sendGETRequest();
+		String response = sendHTTPRequest.sendGETRequest();
 		  
 		  //spliting response by rows
 		  String conversionRates[] = response.split("\n");
@@ -59,7 +59,7 @@ public class Main {
 		 for(int i = 0; i < 3; i++) {
 	        	System.out.println(articleStash.get(i));
 	        }
-
+		 
 		Collections.sort(articleStash, new Comparator<ArticleStash>() {
 		    @Override
 		    public int compare(ArticleStash o1, ArticleStash o2) {
@@ -67,22 +67,16 @@ public class Main {
 		    }
 		});
 		
-		 for(int i = 0; i < 3; i++) {
-	        	System.out.println(articleStash.get(i));
-	        }
-
-		//articleStash = ArticleStash.sortByArticleId(articleStash);
+		
 
 		ArticleStashOutput articleStashFormated = new ArticleStashOutput(articleStash);
-		articleStashFormated.format();
-		 
-		/*for (ArticleStash article : articleStashFormated.getArticleStash())
-	     { 	
-			 System.out.println(article);
-	     }*/
+		articleStashFormated.formatNumbers();
+		articleStashFormated.createArticleStashFile();
 		
-		 
-			  
+		String dellimiter = "\t";
+		String newLine = "\n";
+		articleStashFormated.fillArticleStashFile(articleStashFormated.getArticleStash(), dellimiter, newLine);
+		
 	}
 	
 	
