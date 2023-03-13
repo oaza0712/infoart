@@ -10,45 +10,45 @@ import java.util.Objects;
 
 public class Stash {
 	
-	private String id_article;
-	private String id_store;
-	private float quantity;
+	private String idArticle;
+	private String idStore;
+	private String quantity;
 	
 	
-	public Stash(String id_article, String id_store, float quantity) {
+	public Stash(String idArticle, String idStore, String quantity) {
 		super();
-		this.id_article = id_article;
-		this.id_store = id_store;
+		this.idArticle = idArticle;
+		this.idStore = idStore;
 		this.quantity = quantity;
 	}
 
 
-	public String getId_article() {
-		return id_article;
+	public String getIdArticle() {
+		return idArticle;
 	}
 
 
-	public void setId_article(String id_article) {
-		this.id_article = id_article;
+	public void setIdArticle(String idArticle) {
+		this.idArticle = idArticle;
 	}
 
 
-	public String getId_store() {
-		return id_store;
+	public String getIdStore() {
+		return idStore;
 	}
 
 
-	public void setId_store(String id_store) {
-		this.id_store = id_store;
+	public void setIdStore(String idStore) {
+		this.idStore = idStore;
 	}
 
 
-	public float getQuantity() {
+	public String getQuantity() {
 		return quantity;
 	}
 
 
-	public void setQuantity(float quantity) {
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 
@@ -71,10 +71,10 @@ public class Stash {
 	        	     
 	        	     String id_article = separatedLine[0];
 	        	     String id_store = separatedLine[1];
-	        	     String quantity = separatedLine[2].replaceAll(",", ".");;
+	        	     String quantity = separatedLine[2];
 	        	     
-
-	        	     stash.add(new Stash(id_article, id_store, Float.parseFloat(quantity)));
+	        	     Stash stashItem = new Stash(id_article, id_store, quantity);
+	        	     stash.add(stashItem);
 	        	     
 	        	     System.out.println(line);
 	        	}
@@ -92,9 +92,10 @@ public class Stash {
 
 	}
 	
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_article, id_store, quantity);
+		return Objects.hash(idArticle, idStore, quantity);
 	}
 
 
@@ -107,14 +108,14 @@ public class Stash {
 		if (getClass() != obj.getClass())
 			return false;
 		Stash other = (Stash) obj;
-		return Objects.equals(id_article, other.id_article) && Objects.equals(id_store, other.id_store)
-				&& Float.floatToIntBits(quantity) == Float.floatToIntBits(other.quantity);
+		return Objects.equals(idArticle, other.idArticle) && Objects.equals(idStore, other.idStore)
+				&& Objects.equals(quantity, other.quantity);
 	}
 
 
 	@Override
 	public String toString() {
-		return "Stash [id_article=" + id_article + ", id_store=" + id_store + ", quantity=" + quantity + "]";
+		return "Stash [idArticle=" + idArticle + ", idStore=" + idStore + ", quantity=" + quantity + "]";
 	}
 	
 	

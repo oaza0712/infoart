@@ -10,33 +10,33 @@ import java.util.Objects;
 
 public class PriceEuro {
 	
-	private String article_id;
-	private float priceEuro;
+	private String idArticle;
+	private String priceEuro;
 	
 	
-	public PriceEuro(String article_id, float priceEuro) {
+	public PriceEuro(String idArticle, String priceEuro) {
 		super();
-		this.article_id = article_id;
+		this.idArticle = idArticle;
 		this.priceEuro = priceEuro;
 	}
 
 
-	public String getArticle_id() {
-		return article_id;
+	public String getIdArticle() {
+		return idArticle;
 	}
 
 
-	public void setArticle_id(String article_id) {
-		this.article_id = article_id;
+	public void setIdArticle(String idArticle) {
+		this.idArticle = idArticle;
 	}
 
 
-	public float getPriceEuro() {
+	public String getPriceEuro() {
 		return priceEuro;
 	}
 
 
-	public void setPriceEuro(float priceEuro) {
+	public void setPriceEuro(String priceEuro) {
 		this.priceEuro = priceEuro;
 	}
 
@@ -58,10 +58,10 @@ public class PriceEuro {
 	        	     String separatedLine[] = line.split("\\|");
 	        	     
 	        	     String id = separatedLine[0];
-	        	     String priceEuro = separatedLine[1].replaceAll(",", ".");
+	        	     String priceEuro = separatedLine[1];
 	        	     
 
-	        	     pricesEuro.add(new PriceEuro(id, Float.parseFloat(priceEuro)));
+	        	     pricesEuro.add(new PriceEuro(id, priceEuro));
 	        	     
 	        	     System.out.println(line);
 	        	}
@@ -82,7 +82,7 @@ public class PriceEuro {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(article_id, priceEuro);
+		return Objects.hash(idArticle, priceEuro);
 	}
 
 
@@ -95,13 +95,13 @@ public class PriceEuro {
 		if (getClass() != obj.getClass())
 			return false;
 		PriceEuro other = (PriceEuro) obj;
-		return Objects.equals(article_id, other.article_id)
-				&& Float.floatToIntBits(priceEuro) == Float.floatToIntBits(other.priceEuro);
+		return Objects.equals(idArticle, other.idArticle)
+				&& Objects.equals(priceEuro, other.priceEuro);
 	}
 
 
 	@Override
 	public String toString() {
-		return "PriceEuro [article_id=" + article_id + ", priceEuro=" + priceEuro + "]";
+		return "PriceEuro [article_id=" + idArticle + ", priceEuro=" + priceEuro + "]";
 	}
 }

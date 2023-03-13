@@ -8,6 +8,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Main {
 
@@ -36,7 +38,7 @@ public class Main {
 						  flag++;
 					  }
 					  
-					  if (flag == 1){ 
+					  if (flag == 2){ 
 			      		conversionRate = (Float.parseFloat(line[j].replaceAll(",", ".")));
 			      		break;
 					  }
@@ -46,19 +48,7 @@ public class Main {
       		}
 			  
 		  }
-		  System.out.println(conversionRate);
-		  /*
-		  new BufferedReader(new StringReader(response))
-          .lines().forEach((line) -> {
-          		String[] currency = line.split("\t");
-          		if(currency[0].equals(wantedCurrency)) {
-          			line = (currency[2].replaceAll(",", "."));
-          		} else {line = "";}
-          });
-	      System.out.println(response);
-		*/
 		  
-		
 		ArrayList<Article> articles = Article.parseFile("./input/artikli.txt");
 		ArrayList<Store> stores = Store.parseFile("./input/pm.txt");
 		ArrayList<PriceEuro> pricesEuro = PriceEuro.parseFile("./input/cjenik.txt");
@@ -66,15 +56,33 @@ public class Main {
 		
 		ArrayList<ArticleStash> articleStash = ArticleStash.makeArticleStashObject(articles, stores, pricesEuro, stash,conversionRate);
 		
-		 for (ArticleStash article : articleStash)
+		 for(int i = 0; i < 3; i++) {
+	        	System.out.println(articleStash.get(i));
+	        }
+
+		Collections.sort(articleStash, new Comparator<ArticleStash>() {
+		    @Override
+		    public int compare(ArticleStash o1, ArticleStash o2) {
+		        return o1.getId().compareTo(o2.getId());
+		    }
+		});
+		
+		 for(int i = 0; i < 3; i++) {
+	        	System.out.println(articleStash.get(i));
+	        }
+
+		//articleStash = ArticleStash.sortByArticleId(articleStash);
+
+		ArticleStashOutput articleStashFormated = new ArticleStashOutput(articleStash);
+		articleStashFormated.format();
+		 
+		/*for (ArticleStash article : articleStashFormated.getArticleStash())
 	     { 	
 			 System.out.println(article);
-	     }
+	     }*/
+		
 		 
 			  
-		  
-		  
-		
 	}
 	
 	
