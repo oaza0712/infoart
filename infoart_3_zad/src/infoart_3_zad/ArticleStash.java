@@ -155,11 +155,7 @@ public class ArticleStash {
 				   
 				   if(article.getId().equals(articleStash.getIdArticle())) {
 					   if(articleStash.getQuantity() != "0") {
-						   /*
-						   System.out.println("STRING STASH Quantity" + articleStash.getQuantity());
-						   System.out.println("REPLACE STASH Quantity" + articleStash.getQuantity().replace(",", "."));
-						   System.out.println("float STASH Quantity" + Float.parseFloat(articleStash.getQuantity().replace(",", ".")));
-						   */
+						  
 						   numberOfStores++;
 						   quantity += Float.parseFloat(articleStash.getQuantity().replace(",", "."));
 					   }
@@ -171,11 +167,7 @@ public class ArticleStash {
 			  for(PriceEuro priceEuro: pricesEuro){ 
 				   
 				   if(article.getId().equals(priceEuro.getIdArticle())) {
-					   /*
-					   System.out.println("STRING euro" + priceEuro.getPriceEuro());
-					   System.out.println("REPLACE euro" + priceEuro.getPriceEuro().replace(",", "."));
-					   System.out.println("float  euro" + Float.parseFloat(priceEuro.getPriceEuro().replace(",", ".")));
-					   */
+					 
 					   valueInEuro = quantity * Float.parseFloat(priceEuro.getPriceEuro().replace(",", "."));
 					   priceInEuro = Float.parseFloat(priceEuro.getPriceEuro().replace(",", "."));
 				   }
@@ -226,7 +218,7 @@ public class ArticleStash {
 	}
 
 
-/*
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -237,16 +229,16 @@ public class ArticleStash {
 			return false;
 		ArticleStash other = (ArticleStash) obj;
 		return Objects.equals(id, other.id) && Objects.equals(measuringUnit, other.measuringUnit)
-				&& Objects.equals(name, other.name) && numberOfStoresWithArticle == other.numberOfStoresWithArticle
-				&& Float.floatToIntBits(priceEuro) == Float.floatToIntBits(other.priceEuro)
-				&& Float.floatToIntBits(quantityAllStores) == Float.floatToIntBits(other.quantityAllStores)
-				&& Float.floatToIntBits(valueAllStoresDiffCurrency) == Float
-						.floatToIntBits(other.valueAllStoresDiffCurrency)
-				&& Float.floatToIntBits(valueAllStoresEuro) == Float.floatToIntBits(other.valueAllStoresEuro);
+				&& Objects.equals(name, other.name)
+				&& Objects.equals(numberOfStoresWithArticle, other.numberOfStoresWithArticle)
+				&& Objects.equals(priceEuro, other.priceEuro)
+				&& Objects.equals(quantityAllStores, other.quantityAllStores)
+				&& Objects.equals(valueAllStoresDiffCurrency, other.valueAllStoresDiffCurrency)
+				&& Objects.equals(valueAllStoresEuro, other.valueAllStoresEuro);
 	}
 
-	*/
-/*
+	
+
 	@Override
 	public String toString() {
 		return "ArticleStash [id=" + id + " name=" + name + " priceEuro=" + priceEuro + " quantityAllStores="
@@ -255,14 +247,8 @@ public class ArticleStash {
 				+ numberOfStoresWithArticle + "]";
 	}
 	
-	*/
-	@Override
-	public String toString() {
-		return id + " " + name + " " + priceEuro + " "
-				+ quantityAllStores + " " + measuringUnit + " " + valueAllStoresEuro
-				+ " " + valueAllStoresDiffCurrency + " "
-				+ numberOfStoresWithArticle;
-	}
+	
+	
 	
 
 	
